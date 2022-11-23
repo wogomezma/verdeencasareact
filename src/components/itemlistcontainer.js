@@ -1,80 +1,38 @@
-function Itemlistcontainer ({greeting}) {
-    return (
-        <section class="py-5">
-            <div class="container px-4 px-lg-5 mt-5">
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    <div class="col mb-5">
-                        <div class="card h-100">
-       
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                      
-                            <div class="card-body p-4">
-                            <div class="text-center">
-                             
-                                <h5 class="fw-bolder">{greeting}</h5>
-                              
-                                ${greeting}
-                            </div>
-                            </div>
-                      
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#!">Ver Producto</a></div>
-                            </div>
-                        </div>
-                    
-                    </div>
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import ItemList from "./Itemlist";
+import { item } from "../mocks/item.mock";
 
+const ItemListContainer = () => {
+const { category } = useParams();
+const [products, setProducts] = useState([]);
 
-                    <div class="col mb-5">
-                        <div class="card h-100">
-       
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                      
-                            <div class="card-body p-4">
-                            <div class="text-center">
-                             
-                                <h5 class="fw-bolder">{greeting}</h5>
-                              
-                                ${greeting}
-                            </div>
-                            </div>
-                      
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#!">Ver Producto</a></div>
-                            </div>
-                        </div>
-                    
-                    </div>
+useEffect(() => {
+    new Promise((resolve) =>
+    setTimeout(() => {
+        resolve(item);
+    }, 2000)
+    ).then((data) => {
+    if (category) {
+        const categories = data.filter(
+        (product) => product.category === category
+        );
+        setProducts(categories);
+    } else {
+        setProducts(data);
+    }
+    });
+}, [category]);
 
-
-                    <div class="col mb-5">
-                        <div class="card h-100">
-       
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                      
-                            <div class="card-body p-4">
-                            <div class="text-center">
-                             
-                                <h5 class="fw-bolder">{greeting}</h5>
-                              
-                                ${greeting}
-                            </div>
-                            </div>
-                      
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#!">Ver Producto</a></div>
-                            </div>
-                        </div>
-                    
-                    </div>
-
-
-                </div>
-            </div>
-           </section>         
-    );
-
-
+if (products.length === 0) {
+    return <p>Cargando...</p>
 }
 
-export default Itemlistcontainer;
+return (
+    <div>
+    <ItemList products={products} />
+    </div>
+);
+};
+
+export default ItemListContainer;
