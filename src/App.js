@@ -1,15 +1,20 @@
+
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ItemListContainer from './components/itemlistcontainer';
-import Layout from "./components/Layout";
-
+import Header from "./components/header";
+import Footer from "./components/footer";
+import Navbar from "./components/navbar";
+import Itemlistcontainer from './components/itemlistcontainer';
 
 function App() {
   return (
     <div className="App">
-    <Layout>
-      <ItemListContainer />
-    </Layout>
+      <main>
+        <Header />
+        <Navbar />
+        <Itemlistcontainer greeting={"pendiente"}/>
+        <Footer />
+      </main>
     </div>
   );
 }

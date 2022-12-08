@@ -1,38 +1,26 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useState } from "react";
 import ItemList from "./Itemlist";
 import { item } from "../mocks/item.mock";
 
-const ItemListContainer = () => {
-const { category } = useParams();
-const [products, setProducts] = useState([]);
 
-useEffect(() => {
-    new Promise((resolve) =>
+const ItemListContainer = ({ greeting }) => {
+  const [products, setProducts] = useState([]);
+
+  const productList = new Promise((resolve) =>
     setTimeout(() => {
-        resolve(item);
-    }, 2000)
-    ).then((data) => {
-    if (category) {
-        const categories = data.filter(
-        (product) => product.category === category
-        );
-        setProducts(categories);
-    } else {
-        setProducts(data);
-    }
-    });
-}, [category]);
+      resolve(item);
+    }, 3000)
+  );
 
-if (products.length === 0) {
-    return <p>Cargando...</p>
-}
+  productList.then((data) => setProducts(data));
 
-return (
-    <div>
-    <ItemList products={products} />
-    </div>
-);
+  return (
+    <section class="py-5">
+    
+            <ItemList products={products} />
+
+    </section>
+  );
 };
 
 export default ItemListContainer;

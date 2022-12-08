@@ -1,12 +1,21 @@
-import ItemListContainer from "../components/itemlistcontainer";
-import Layout from "../components/Layout";
+import '../App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from "../components/header";
+import Footer from "../components/footer";
+import Navbar from "../components/navbar";
+import Itemlistcontainer from '../components/itemlistcontainer';
 
-const CategoryView = () => {
-    return (
-      <Layout>
-        <ItemListContainer />
-      </Layout>
-    );
-  };
+function Category() {
+  return (
+    <div className="App">
+      <main>
+        <Header />
+        <Navbar />
+        <Itemlistcontainer greeting={"pendiente"}/>
+        <Footer />
+      </main>
+    </div>
+  );
+}
 
-export default CategoryView;
+export default Category;
