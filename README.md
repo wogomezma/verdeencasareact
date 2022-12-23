@@ -7,7 +7,6 @@ $ npm install react-bootstrap bootstrap
 $ npm install react-icons
 $ npm install firebase
 
-Proyecto: https://
 
  # Tienda Online VerdeEnCasa por Walter Oswaldo Gomez Mancipe
 
