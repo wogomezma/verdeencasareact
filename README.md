@@ -6,6 +6,8 @@ $ npm install react-router-dom
 $ npm install react-bootstrap bootstrap
 $ npm install react-icons
 $ npm install firebase
+$ npm install sweetalert --save
+
 
 Proyecto: https://
 
@@ -22,3 +24,4 @@ Este proyecto es una Tienda Online donde se comercia Infusiones Medicinales.
 - [Bootstrap] (https://getbootstrap.com/)
 - [ReacIcons] (https://react-icons.github.io/react-icons/)
 - [FireBase] (https://firebase.google.com)
+- [SweetAlert] (https://sweetalert.js.org/)
